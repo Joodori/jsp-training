@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025-08-06 JSP Review</title>
+<style>
+</style>
+</head>
+<body>
+	<h1>웹 폼 사례</h1>
+<!-- 데이터를 전달하는 방식(get or post)에 따라 어떻게 해주어야하는지 -->
+<!-- method="get" => form이 이동되는 부분에서 따로 처리를 해주지 않아도 <%= 변수명 %>으로 받을 수 있음 -->
+<!-- method="post" => form이 이동되는 부분에서 한글은 인코딩이 깨져서 나오기때문에 request부분에서 시작되는 부분에 setCharacterEncoding을 utf-8로 설정해야함 -->
+<!-- hobby에서 묶는 방법과 lunch부분은 Day2_Review.jsp파일 -->
+	<div>
+		<form  action="Day2_Review.jsp" method="post" > <!-- post방식에서 username부분에 특정 처리를 하지않고 한글을 입력했을 때 인코딩이 깨져서 나옴 -->
+		 <!-- request.setCharacterEncoding("utf-8"); 이 부분을 데이터(request)를 넘겨받는 쪽에서 처리해주어야함 -->
+			<table cellspacing="5" border="1">
+				<tr>
+					<td>사용자이름</td>
+					<td><input type="text" name="username"
+						placeholder="이름을 입력하세요."></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" name="email"
+						placeholder="메일주소를 입력하세요."></td>
+				</tr>
+				<tr>
+					<td>검색단어</td>
+					<td><input type="text" name="searchword"
+						placeholder="검색단어 입력하세요."></td>
+				</tr>
+				<tr>
+					<td>취미</td>
+					<td style="text-align: center;"><input type="checkbox"
+						id="exercise" name="hobby" value="sports"> <label
+						for="exercise">운동</label> <input type="checkbox" id="instrument"
+						name="hobby" value="instrument"> <label for="instrument">악기</label>
+						<input type="checkbox" id="travel" name="hobby" value="travel">
+						<label for="travel">여행</label></td> </tr> 
+				<tr>
+					<td>성별</td>
+					<td style="text-align: center;">
+						<input type="radio" id="male" name="gender" value="male"> <label for="male">남자</label>
+						<input type="radio" id="female" name="gender" value="female"> <label for="female">여자</label>
+					</td>
+				</tr>
+				<tr>
+					<!-- 각 option들에 대한 value값을 한글로 적으면 부적절하기 때문에 일부러 가칭을 정해둠 => Day2_Review.jsp -->
+					<td>점심메뉴</td>
+					<td style="text-align: center;"><select name="menu">
+							<option align="center">-</option>
+							<option value="jja">짜장면</option>
+							<option value="jjam">짬뽕</option>
+							<option value="tang">탕수육</option>
+					</select></td>
+				</tr>
+			</table>
+			<div style="text-align: center;">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+	
+	
+<!-- 값들을 전달받고 그 내용들을 저장하는 파일을 만드는 방법 -->
+	<div>
+	<form action="Day2_Review2.jsp" method="get">
+		<table border="2">
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="userName" placeholder="이름을 입력하세요."></td>
+			</tr>
+			<tr>
+				<th>나이</th>
+				<td><input type="text" name="userAge" placeholder="나이를 입력하세요."></td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td><intput type="text" name="userEmail" placeholder="이메일을 입력하세요."></td>
+			</tr>			
+		</table>
+	</form>
+	</div>
+</body>
+</html>
